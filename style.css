@@ -491,6 +491,15 @@ body {
 
 }
 
+#systemfehler {
+    position: relative;
+    left: 5%;
+    width: 90%;
+    margin-top: 1vh;
+    margin-bottom: 0.5vh;
+    
+}
+
 #reue {
     position: relative;
     left: 5%;

@@ -166,6 +166,10 @@ function startCalculating() {
         reasonText += ` + ${systemwanteds} Systemwanteds`
     }
 
+    if (document.getElementById("systemfehler_box").checked) {
+        reasonText += ` - Systemfehler`
+    }
+
 
     if (removeDriverLicense) {
         noticeText = "Führerschein entziehen"
@@ -254,6 +258,7 @@ function resetButton() {
     document.getElementById("notepadArea_input").value = ""
     
     document.getElementById("reue_box").checked = false
+    document.getElementById("systemfehler_box").checked = false
 
     startCalculating()
 }
