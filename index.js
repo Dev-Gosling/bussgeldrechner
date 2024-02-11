@@ -215,6 +215,20 @@ function showFines() {
     }
 } 
 
+function showAttorneys() {
+    console.log("CLICKED");
+    console.log(document.getElementById("attorneyContainer").style.opacity);
+    if (document.getElementById("attorneyContainer").style.opacity == 0) {
+        console.log("SHOW");
+        document.getElementById("attorneyContainer").style.opacity = 1
+        document.getElementById("attorneyContainer").style.pointerEvents = ""
+    } else {
+        console.log("HIDE");
+        document.getElementById("attorneyContainer").style.opacity = 0
+        document.getElementById("attorneyContainer").style.pointerEvents = "none"
+    }
+} 
+
 
 window.onload = async () => {
     console.log("onload");
