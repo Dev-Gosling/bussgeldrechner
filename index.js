@@ -16,7 +16,6 @@ function searchFine() {
 
 function selectFine(event) {
     let element = event.target
-    console.log(element.tagName);
     if (element.tagName == "FONT") return
     if (element.tagName == "TD") element = element.parentElement
     if (element.tagName == "I") element = element.parentElement.parentElement
@@ -166,6 +165,11 @@ function startCalculating() {
         reasonText += ` + ${systemwanteds} Systemwanteds`
     }
 
+    if (!isNaN(systemwanteds) && systemwanteds !== "") {
+        wantedAmount = wantedAmount + parseInt(systemwanteds)
+        if (wantedAmount > 5) wantedAmount = 5
+    }
+
     if (document.getElementById("systemfehler_box").checked) {
         reasonText += ` - Systemfehler`
     }
@@ -197,33 +201,24 @@ function startCalculating() {
         characterResult.innerHTML = `<b>Zeichen:</b> <font style="color: red;">${reasonText.length}/150<br>Dieser Grund ist zu lang!</font>`
     }
 
-    console.log(reasonText.length)
 }
 
 
 function showFines() {
-    console.log("CLICKED");
-    console.log(document.getElementById("finesListContainer").style.opacity);
     if (document.getElementById("finesListContainer").style.opacity == 0) {
-        console.log("SHOW");
         document.getElementById("finesListContainer").style.opacity = 1
         document.getElementById("finesListContainer").style.pointerEvents = ""
     } else {
-        console.log("HIDE");
         document.getElementById("finesListContainer").style.opacity = 0
         document.getElementById("finesListContainer").style.pointerEvents = "none"
     }
 } 
 
 function showAttorneys() {
-    console.log("CLICKED");
-    console.log(document.getElementById("attorneyContainer").style.opacity);
     if (document.getElementById("attorneyContainer").style.opacity == 0) {
-        console.log("SHOW");
         document.getElementById("attorneyContainer").style.opacity = 1
         document.getElementById("attorneyContainer").style.pointerEvents = ""
     } else {
-        console.log("HIDE");
         document.getElementById("attorneyContainer").style.opacity = 0
         document.getElementById("attorneyContainer").style.pointerEvents = "none"
     }
@@ -231,7 +226,6 @@ function showAttorneys() {
 
 
 window.onload = async () => {
-    console.log("onload");
     let savedBody;
     let alreadyBig = true
 
@@ -320,11 +314,9 @@ function toggleExtraWanted(event) {
 
     if (isSelected) {
 
-        console.log("D");
 
         let found = target.parentElement.querySelectorAll(".extrawanted")
         for (let i = 0; i < found.length; i++) {
-            console.log(i, extrastarNumber);
             if (i + 1 > extrastarNumber) {
 
                 found[i].classList.remove("selected_extrawanted")
